@@ -14,10 +14,10 @@
 void copy_paste_mac(qk_tap_dance_state_t *state, void *user_data) {
   switch (state->count) {
     case 1:
-      register_code(KC_RGUI); register_code(KC_C); unregister_code(KC_C); unregister_code(KC_RGUI); 
+      register_code(KC_RGUI); register_code(KC_V); unregister_code(KC_V); unregister_code(KC_RGUI); 
       break;
     case 2:
-      register_code(KC_RGUI); register_code(KC_V); unregister_code(KC_V); unregister_code(KC_RGUI); 
+      register_code(KC_RGUI); register_code(KC_C); unregister_code(KC_C); unregister_code(KC_RGUI); 
       break;
   }
 }
@@ -25,10 +25,10 @@ void copy_paste_mac(qk_tap_dance_state_t *state, void *user_data) {
 void copy_paste(qk_tap_dance_state_t *state, void *user_data) {
   switch (state->count) {
     case 1:
-      register_code(KC_LCTL); register_code(KC_C); unregister_code(KC_C); unregister_code(KC_LCTL); 
+      register_code(KC_LCTL); register_code(KC_V); unregister_code(KC_V); unregister_code(KC_LCTL); 
       break;
     case 2:
-      register_code(KC_LCTL); register_code(KC_V); unregister_code(KC_V); unregister_code(KC_LCTL); 
+      register_code(KC_LCTL); register_code(KC_C); unregister_code(KC_C); unregister_code(KC_LCTL); 
       break;
   }
 }
