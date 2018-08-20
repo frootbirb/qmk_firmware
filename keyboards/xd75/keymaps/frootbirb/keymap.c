@@ -72,11 +72,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	),
 
     KEYMAP( // symbol layer
-        KC_PWR,	__,		__,		__,		__,		__,		__,	__,	__,	__,	__,		__,		__,		__,		__,
-        __,	KC_6,		KC_7,		KC_8,		KC_9,		KC_0,		__,	__,	__,	__,	KC_UNDS,	KC_AT,		KC_HASH,	KC_DLR,		__,
-        __,	KC_TILD,	KC_QUES,	KC_EXLM,	KC_SLSH,	KC_AMPR,	__,	__,	__,	__,	TD(PAREN),	TD(BRACE),	TD(BRCK),	TD(A_BRCK),	KC_GRV,
-        __,	KC_PLUS,	KC_MINUS,	KC_ASTR,	KC_BSLS,	KC_EQL,		__,	__,	__,	__,	KC_CIRC,	KC_PERC,	__,		__,		__,
-        __,	__,		__,		__,		__,		__,		__,	__,	KC_DEL,	__,	__,		__,		__,		__,		__
+        KC_PWR,	__,		__,		__,		__,		__,		__,	__,	__,	__,		__,		__,		__,		__,		__,
+        __,	KC_6,		KC_7,		KC_8,		KC_9,		KC_0,		__,	__,	__,	__,		KC_UNDS,	KC_AT,		KC_HASH,	KC_DLR,		__,
+        __,	KC_TILD,	KC_QUES,	KC_EXLM,	KC_SLSH,	KC_AMPR,	__,	__,	__,	KC_PIPE,	TD(PAREN),	TD(BRACE),	TD(BRCK),	TD(A_BRCK),	KC_GRV,
+        __,	KC_PLUS,	KC_MINUS,	KC_ASTR,	KC_BSLS,	KC_EQL,		__,	__,	__,	__,		KC_CIRC,	KC_PERC,	__,		__,		__,
+        __,	__,		__,		__,		__,		__,		__,	__,	KC_DEL,	__,		__,		__,		__,		__,		__
 	),
 
     KEYMAP( // function layer
