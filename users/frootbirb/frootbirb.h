@@ -27,6 +27,7 @@
 #define SYM_SPC LT(SYM, KC_SPC)
 #define MAC_LCK RGUI(LCTL(KC_Q))
 #define MAC_SCR RGUI(S(KC_4))
+#define TAB_NUM LT(NUM, KC_TAB)
 
 // Macro definitions
 void copy_paste_mac(qk_tap_dance_state_t *state, void *user_data);
