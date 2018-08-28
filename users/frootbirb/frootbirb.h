@@ -24,6 +24,7 @@
 #define ABRCK TD(ANGLE_BRACKETS)
 
 #define SFT_ENT MT(MOD_LSFT, KC_ENT)
+#define SYM_SPC LT(SYM, KC_SPC)
 #define MAC_LCK RGUI(LCTL(KC_Q))
 #define MAC_SCR RGUI(S(KC_4))
 

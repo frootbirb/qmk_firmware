@@ -1,0 +1,305 @@
+[33mcommit e7fd3b2fa5dd879749db14a77c99fa4b828b5eb4[m
+Author:  <FROOTBIRB@FROOTBIRB.localdomain>
+Date:   Mon Jun 4 15:46:51 2018 -0400
+
+    Added my own keymap for the Planck
+
+[1mdiff --git a/keyboards/planck/keymaps/frootbirb/config.h b/keyboards/planck/keymaps/frootbirb/config.h[m
+[1mnew file mode 100644[m
+[1mindex 0000000..82a63f4[m
+[1m--- /dev/null[m
+[1m+++ b/keyboards/planck/keymaps/frootbirb/config.h[m
+[36m@@ -0,0 +1,49 @@[m
+[32m+[m[32m#ifndef CONFIG_USER_H[m
+[32m+[m[32m#define CONFIG_USER_H[m
+[32m+[m
+[32m+[m[32m#include "config_common.h"[m
+[32m+[m
+[32m+[m[32m#ifndef LIGHT_CONFIG_H[m
+[32m+[m[32m#define BACKLIGHT_BREATHING[m
+[32m+[m[32m#define BREATHING_PERIOD 3[m
+[32m+[m[32m#endif[m
+[32m+[m
+[32m+[m[32m#ifdef AUDIO_ENABLE[m
+[32m+[m[32m    #define STARTUP_SONG SONG(PLANCK_SOUND)[m
+[32m+[m[32m    // #define STARTUP_SONG SONG(NO_SOUND)[m
+[32m+[m
+[32m+[m[32m    #define DEFAULT_LAYER_SONGS { SONG(QWERTY_SOUND), \[m
+[32m+[m[32m                                  SONG(COLEMAK_SOUND), \[m
+[32m+[m[32m                                  SONG(DVORAK_SOUND) \[m
+[32m+[m[32m                                }[m
+[32m+[m[32m#endif[m
+[32m+[m
+[32m+[m[32m#define MUSIC_MASK (keycode != KC_NO)[m
+[32m+[m
+[32m+[m[32m#define TAPPING_TERM 200[m
+[32m+[m
+[32m+[m[32m/*[m
+[32m+[m[32m * MIDI options[m
+[32m+[m[32m */[m
+[32m+[m
+[32m+[m[32m/* Prevent use of disabled MIDI features in the keymap */[m
+[32m+[m[32m//#define MIDI_ENABLE_STRICT 1[m
+[32m+[m
+[32m+[m[32m/* enable basic MIDI features:[m
+[32m+[m[32m   - MIDI notes can be sent when in Music mode is on[m
+[32m+[m[32m*/[m
+[32m+[m
+[32m+[m[32m#define MIDI_BASIC[m
+[32m+[m
+[32m+[m[32m/* enable advanced MIDI features:[m
+[32m+[m[32m   - MIDI notes can be added to the keymap[m
+[32m+[m[32m   - Octave shift and transpose[m
+[32m+[m[32m   - Virtual sustain, portamento, and modulation wheel[m
+[32m+[m[32m   - etc.[m
+[32m+[m[32m*/[m
+[32m+[m[32m//#define MIDI_ADVANCED[m
+[32m+[m
+[32m+[m[32m/* override number of MIDI tone keycodes (each octave adds 12 keycodes and allocates 12 bytes) */[m
+[32m+[m[32m//#define MIDI_TONE_KEYCODE_OCTAVES 2[m
+[32m+[m
+[32m+[m[32m#endif[m
+[1mdiff --git a/keyboards/planck/keymaps/frootbirb/keymap.c b/keyboards/planck/keymaps/frootbirb/keymap.c[m
+[1mnew file mode 100644[m
+[1mindex 0000000..ebf1c9b[m
+[1m--- /dev/null[m
+[1m+++ b/keyboards/planck/keymaps/frootbirb/keymap.c[m
+[36m@@ -0,0 +1,207 @@[m
+[32m+[m[32m#include "planck.h"[m
+[32m+[m
+[32m+[m[32m// Layer Definitions[m
+[32m+[m[32m#define NUM 1[m
+[32m+[m[32m#define NAV 2[m
+[32m+[m[32m#define SND 3[m
+[32m+[m[41m [m
+[32m+[m[32m// Tap Dance Declarations[m
+[32m+[m[32menum {[m
+[32m+[m[32m  PAREN = 0,[m
+[32m+[m[32m  BRACE,[m
+[32m+[m[32m  BRACKET,[m
+[32m+[m[32m  ANGLE_BRACKET[m
+[32m+[m[32m};[m
+[32m+[m
+[32m+[m[32m// Tap Dance Definitions[m
+[32m+[m[32mqk_tap_dance_action_t tap_dance_actions[] = {[m
+[32m+[m[32m  [PAREN] = ACTION_TAP_DANCE_DOUBLE(KC_LEFT_PAREN, KC_RIGHT_PAREN),[m
+[32m+[m[32m  [BRACE] = ACTION_TAP_DANCE_DOUBLE(KC_LEFT_CURLY_BRACE, KC_RIGHT_CURLY_BRACE),[m
+[32m+[m[32m  [BRACKET] = ACTION_TAP_DANCE_DOUBLE(KC_LBRACKET, KC_RBRACKET),[m
+[32m+[m[32m  [ANGLE_BRACKET] = ACTION_TAP_DANCE_DOUBLE(KC_LEFT_ANGLE_BRACKET, KC_RIGHT_ANGLE_BRACKET)[m
+[32m+[m[32m};[m
+[32m+[m
+[32m+[m[32mconst uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {[m
+[32m+[m
+[32m+[m	[32mKEYMAP([m
+[32m+[m		[32mKC_ESC, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,[m[41m [m
+[32m+[m		[32mKC_TAB, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT,[m[41m [m
+[32m+[m		[32mKC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_UP, KC_ENT,[m[41m [m
+[32m+[m		[32mKC_LCTL, KC_LALT, KC_APP, TG(NUM), KC_PSCR, LT(NUM, KC_SPC), LT(NUM, KC_SPC), MO(NAV), OSL(SND), KC_LEFT, KC_DOWN, KC_RGHT),[m
+[32m+[m[41m    [m
+[32m+[m[32m    /* Base Layer[m
+[32m+[m[32m      Esc   q   w   e   r   t   y   u   i   o   p   Bck[m
+[32m+[m[32m      Tab   a   s   d   f   g   h   j   k   l   ;   '[m
+[32m+[m[32m      Shft  z   x   c   v   b   n   m   ,   .   Up  Ent[m
+[32m+[m[32m      Ctrl  Alt App TNm Prn SNm SNm MNv OSn Lft Dwn Rgt[m
+[32m+[m[32m    */[m
+[32m+[m
+[32m+[m	[32mKEYMAP([m
+[32m+[m		[32mKC_TRNS, KC_MINS, KC_7, KC_8, KC_9, KC_ASTR, KC_TILD, KC_UNDS, KC_AT, KC_HASH, KC_DLR, KC_DEL,[m[41m  [m
+[32m+[m		[32mKC_TRNS, KC_PLUS, KC_4, KC_5, KC_6, KC_SLSH, KC_BSLS, TD(PAREN), TD(BRACE), TD(BRACKET), TD(ANGLE_BRACKET), KC_CIRC,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_EQL, KC_1, KC_2, KC_3, KC_ENT, KC_GRV, KC_EXLM, KC_QUES, KC_PERC, KC_TRNS, KC_AMPR,[m[41m [m
+[32m+[m		[32mKC_DOT, KC_LGUI, KC_TRNS, KC_TRNS, KC_0, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),[m
+[32m+[m[41m    [m
+[32m+[m[32m    /* Num/Symbol Layer[m
+[32m+[m[32m      Th  -   7   8   9   *   ~   _   @   #   $   Del[m
+[32m+[m[32m      Th  +   4   5   6   /   \   ()  {}  []  <>  ^[m
+[32m+[m[32m      Th  =   1   2   3   Ent `   !   ?   %   Th  &[m
+[32m+[m[32m      .   Win Th  TOG 0   HLD HLD Th  Th  Th  Th  Th[m
+[32m+[m[32m    */[m
+[32m+[m
+[32m+[m	[32mKEYMAP([m
+[32m+[m		[32mKC_PWR, KC_F1, KC_F2, KC_F3, KC_F4, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_F5, KC_F6, KC_F7, KC_F8, KC_TRNS, KC_TRNS, KC_INS, KC_CAPS, KC_NLCK, KC_SLCK, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_F9, KC_F10, KC_F11, KC_F12, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PGUP, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME, KC_PGDN, KC_END),[m
+[32m+[m[41m [m
+[32m+[m[32m    /* Nav/Function Layer[m
+[32m+[m[32m      Pwr F1  F2  F3  F4  Th  Th  Th  Th  Th  Th  Th[m
+[32m+[m[32m      Th  F5  F6  F7  F8  Th  Th  Ins CLk NLk SLk Th[m
+[32m+[m[32m      Th  F9  F10 F11 F12 Th  Th  Th  Th  Th  PUp Th[m
+[32m+[m[32m      Th  Th  Th  Th  Th  Th  Th  HLD Th  Hme PDn End[m
+[32m+[m[32m    */[m
+[32m+[m
+[32m+[m	[32mKEYMAP([m
+[32m+[m		[32mMEH(KC_F1), MEH(KC_F2), MEH(KC_F3), MEH(KC_F4), MEH(KC_F5), MEH(KC_F6), HYPR(KC_F1), HYPR(KC_F2), HYPR(KC_F3), HYPR(KC_F4), HYPR(KC_F5), HYPR(KC_F6),[m[41m [m
+[32m+[m		[32mMEH(KC_F7), MEH(KC_F8), MEH(KC_F9), MEH(KC_F10), MEH(KC_F11), MEH(KC_F12), HYPR(KC_F7), HYPR(KC_F8), HYPR(KC_F9), HYPR(KC_F10), HYPR(KC_F11), HYPR(KC_F12),[m[41m [m
+[32m+[m		[32mMEH(KC_F13), MEH(KC_F14), MEH(KC_F15), MEH(KC_F16), MEH(KC_F17), MEH(KC_F18), HYPR(KC_F13), HYPR(KC_F14), HYPR(KC_F15), HYPR(KC_F16), HYPR(KC_F17), HYPR(KC_F18),[m[41m [m
+[32m+[m		[32mMEH(KC_F19), MEH(KC_F20), MEH(KC_F21), MEH(KC_F22), MEH(KC_F23), MEH(KC_F24), HYPR(KC_F19), HYPR(KC_F20), KC_TRNS, HYPR(KC_F22), HYPR(KC_F23), HYPR(KC_F24)),[m
+[32m+[m[41m [m
+[32m+[m[32m    /* Soundboard Layer[m
+[32m+[m[32m      F1-F24, Meh on the left and Hyper on the right. Trust me. Except 4th from the right, bottom row, which is a no-op.[m
+[32m+[m[32m    */[m
+[32m+[m
+[32m+[m	[32mKEYMAP([m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),[m
+[32m+[m[41m [m
+[32m+[m[32m    /* Blank Layer[m
+[32m+[m[32m      Th  Th  Th  Th  Th  Th  Th  Th  Th  Th  Th  Th[m
+[32m+[m[32m      Th  Th  Th  Th  Th  Th  Th  Th  Th  Th  Th  Th[m
+[32m+[m[32m      Th  Th  Th  Th  Th  Th  Th  Th  Th  Th  Th  Th[m
+[32m+[m[32m      Th  Th  Th  Th  Th  Th  Th  Th  Th  Th  Th  Th[m
+[32m+[m[32m    */[m
+[32m+[m
+[32m+[m	[32mKEYMAP([m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),[m
+[32m+[m
+[32m+[m	[32mKEYMAP([m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),[m
+[32m+[m
+[32m+[m	[32mKEYMAP([m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),[m
+[32m+[m
+[32m+[m	[32mKEYMAP([m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),[m
+[32m+[m
+[32m+[m	[32mKEYMAP([m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),[m
+[32m+[m
+[32m+[m	[32mKEYMAP([m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),[m
+[32m+[m
+[32m+[m	[32mKEYMAP([m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),[m
+[32m+[m
+[32m+[m	[32mKEYMAP([m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),[m
+[32m+[m
+[32m+[m	[32mKEYMAP([m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),[m
+[32m+[m
+[32m+[m	[32mKEYMAP([m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),[m
+[32m+[m
+[32m+[m	[32mKEYMAP([m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,[m[41m [m
+[32m+[m		[32mKC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS)[m
+[32m+[m
+[32m+[m[32m};[m
+[32m+[m
+[32m+[m[32mconst macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {[m
+[32m+[m	[32m//keyevent_t event = record->event;[m
+[32m+[m
+[32m+[m	[32mswitch (id) {[m
+[32m+[m
+[32m+[m	[32m}[m
+[32m+[m	[32mreturn MACRO_NONE;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mvoid matrix_init_user(void) {[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mvoid matrix_scan_user(void) {[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mbool process_record_user(uint16_t keycode, keyrecord_t *record) {[m
+[32m+[m	[32mreturn true;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mvoid led_set_user(uint8_t usb_led) {[m
+[32m+[m
+[32m+[m	[32mif (usb_led & (1 << USB_LED_NUM_LOCK)) {[m
+[32m+[m[41m		[m
+[32m+[m	[32m} else {[m
+[32m+[m[41m		[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32mif (usb_led & (1 << USB_LED_CAPS_LOCK)) {[m
+[32m+[m[41m		[m
+[32m+[m	[32m} else {[m
+[32m+[m[41m		[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32mif (usb_led & (1 << USB_LED_SCROLL_LOCK)) {[m
+[32m+[m[41m		[m
+[32m+[m	[32m} else {[m
+[32m+[m[41m		[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32mif (usb_led & (1 << USB_LED_COMPOSE)) {[m
+[32m+[m[41m		[m
+[32m+[m	[32m} else {[m
+[32m+[m[41m		[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m	[32mif (usb_led & (1 << USB_LED_KANA)) {[m
+[32m+[m[41m		[m
+[32m+[m	[32m} else {[m
+[32m+[m[41m		[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/keyboards/planck/keymaps/frootbirb/rules.mk b/keyboards/planck/keymaps/frootbirb/rules.mk[m
+[1mnew file mode 100644[m
+[1mindex 0000000..a71e4b7[m
+[1m--- /dev/null[m
+[1m+++ b/keyboards/planck/keymaps/frootbirb/rules.mk[m
+[36m@@ -0,0 +1,24 @@[m
+[32m+[m[32m# Build Options[m
+[32m+[m[32m#   change to "no" to disable the options, or define them in the Makefile in[m
+[32m+[m[32m#   the appropriate keymap folder that will get included automatically[m
+[32m+[m[32m#[m
+[32m+[m[32mBOOTMAGIC_ENABLE = no       # Virtual DIP switch configuration(+1000)[m
+[32m+[m[32mMOUSEKEY_ENABLE = no        # Mouse keys(+4700)[m
+[32m+[m[32mEXTRAKEY_ENABLE = yes       # Audio control and System control(+450)[m
+[32m+[m[32mCONSOLE_ENABLE = no         # Console for debug(+400)[m
+[32m+[m[32mCOMMAND_ENABLE = yes        # Commands for debug and configuration[m
+[32m+[m[32mNKRO_ENABLE = yes           # Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work[m
+[32m+[m[32mBACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality[m
+[32m+[m[32mMIDI_ENABLE = no            # MIDI controls[m
+[32m+[m[32mAUDIO_ENABLE = no           # Audio output on port C6[m
+[32m+[m[32mUNICODE_ENABLE = no         # Unicode[m
+[32m+[m[32mBLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID[m
+[32m+[m[32mRGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight.  Do not enable this with audio at the same time.[m
+[32m+[m[32mTAP_DANCE_ENABLE = yes[m
+[32m+[m
+[32m+[m[32m# Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE[m
+[32m+[m[32mSLEEP_LED_ENABLE = no    # Breathing sleep LED during USB suspend[m
+[32m+[m
+[32m+[m[32mifndef QUANTUM_DIR[m
+[32m+[m	[32minclude ../../../../Makefile[m
+[32m+[m[32mendif[m
