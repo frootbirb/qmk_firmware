@@ -1,2 +1,5 @@
-TAP_DANCE_ENABLE = yes
 SRC += frootbirb.c
+
+ifndef TAP_DANCE_ENABLE
+  TAP_DANCE_ENABLE = yes
+endif

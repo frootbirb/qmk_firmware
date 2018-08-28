@@ -3,6 +3,42 @@
 
 #include "quantum.h"
 
-#define TAPPING_TERM 200
+// Layer Definitions
+#define DEF 0
+#define MAC 1
+#define SYM 2
+#define NAV 3
+#define NUM 4
+
+// Prettify common keycodes
+#define ____ KC_TRNS
+#define xxxx KC_NO
+
+// Prettify long keycodes
+#define COPY TD(COPY_PASTE)
+#define MACCOPY TD(COPY_PASTE_MAC)
+
+#define PAREN TD(PARENTHESES)
+#define BRACE TD(BRACES)
+#define BRACK TD(BRACKETS)
+#define ABRCK TD(ANGLE_BRACKETS)
+
+#define SFT_ENT MT(MOD_LSFT, KC_ENT)
+#define MAC_LCK RGUI(LCTL(KC_Q))
+#define MAC_SCR RGUI(S(KC_4))
+
+// Macro definitions
+void copy_paste_mac(qk_tap_dance_state_t *state, void *user_data);
+void copy_paste(qk_tap_dance_state_t *state, void *user_data);
+
+// Tap Dance Declarations
+enum {
+    PARENTHESES = 0,
+    BRACES,
+    BRACKETS,
+    ANGLE_BRACKETS,
+    COPY_PASTE_MAC,
+    COPY_PASTE
+};
 
 #endif
