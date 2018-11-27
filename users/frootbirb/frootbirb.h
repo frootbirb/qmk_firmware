@@ -25,7 +25,6 @@
 
 #define SFT_ENT MT(MOD_LSFT, KC_ENT)
 #define SYM_SPC LT(SYM, KC_SPC)
-#define SYM_SLS LT(SYM, KC_SLSH)
 #define NAV_DOT LT(NAV, KC_DOT)
 #define MAC_LCK RGUI(LCTL(KC_Q))
 #define MAC_SCR RGUI(S(KC_4))
