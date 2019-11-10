@@ -1,8 +1,15 @@
 #ifndef CONFIG_USERSPACE_H
 #define CONFIG_USERSPACE_H
 
-#define TAPPING_TERM 200
+#define TAPPING_TERM 150
 
 #define COMBO_COUNT 2
+#define FORCE_NKRO
+
+// Filesize reduction
+#undef RGBLIGHT_ANIMATIONS
+#define RGBLIGHT_EFFECT_BREATHING
+
+#define NO_ACTION_ONESHOT
 
 #endif

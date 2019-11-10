@@ -5,3 +5,8 @@ ifndef TAP_DANCE_ENABLE
 endif
 
 COMBO_ENABLE = yes
+NKRO_ENABLE = yes
+
+# Filesize reduction
+#EXTRAFLAGS += -flto
+MOUSEKEY_ENABLE = no

@@ -1,7 +1,17 @@
 #include "frootbirb.h"
 
+// Color setup
+void matrix_init_user(void) {
+	rgblight_enable();
+	for (int i = 0; i < RGBLED_NUM; i++) {
+		setrgb(0, 255, 255, (LED_TYPE *)&led[i]);
+	}
+	rgblight_mode(RGBLIGHT_MODE_BREATHING);
+};
+
+// Key combo definitions
 enum combos {
-	CMB_PPLS,
+	CMB_PPLS = 0,
 	CMB_PAST
 };
 
@@ -39,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ____,  ____,    ____,    ____,    ____,    ____,    ____, ____, ____, ____,    KC_DEL,  ____,    ____,    ____,    ____
     ),
 
-    LAYOUT_ortho_5x15( // function layer
+    LAYOUT_ortho_5x15( // navigation layer
         KC_PWR, ____,  ____,   ____,   ____,   ____, ____, ____, ____, ____, ____,    RGB_HUD, RGB_HUI, ____,    ____,
         ____,   KC_F1, KC_F2,  KC_F3,  KC_F4,  ____, ____, ____, ____, ____, RGB_TOG, RGB_VAD, RGB_VAI, RGB_MOD, RGUI(KC_SPC),
         ____,   KC_F5, KC_F6,  KC_F7,  KC_F8,  ____, ____, ____, ____, ____, KC_INS,  KC_NLCK, KC_CAPS, KC_SLCK, ____,

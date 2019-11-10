@@ -10,7 +10,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [COPY_PASTE] = ACTION_TAP_DANCE_FN(copy_paste)
 };
 
-
 // Macro definitions
 void copy_paste_mac(qk_tap_dance_state_t *state, void *user_data) {
     switch (state->count) {
