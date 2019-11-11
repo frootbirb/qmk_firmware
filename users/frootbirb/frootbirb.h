@@ -41,7 +41,7 @@ enum {
     BRACKETS,
     ANGLE_BRACKETS,
     COPY_PASTE_MAC,
-    COPY_PASTE
+    COPY_PASTE,
 };
 
 #endif

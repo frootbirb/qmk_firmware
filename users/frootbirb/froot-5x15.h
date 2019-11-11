@@ -12,7 +12,7 @@ void matrix_init_user(void) {
 // Key combo definitions
 enum combos {
 	CMB_PPLS = 0,
-	CMB_PAST
+	CMB_PAST,
 };
 
 const uint16_t PROGMEM pls_combo[] = {KC_PMNS, KC_EQL, COMBO_END};
@@ -20,7 +20,7 @@ const uint16_t PROGMEM ast_combo[] = {KC_PSLS, KC_EQL, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [CMB_PPLS] = COMBO(pls_combo, KC_PPLS),
-  [CMB_PAST] = COMBO(ast_combo, KC_PAST)
+  [CMB_PAST] = COMBO(ast_combo, KC_PAST),
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {

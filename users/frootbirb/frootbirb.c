@@ -7,7 +7,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [BRACKETS] = ACTION_TAP_DANCE_DOUBLE(KC_LBRACKET, KC_RBRACKET),
     [ANGLE_BRACKETS] = ACTION_TAP_DANCE_DOUBLE(KC_LEFT_ANGLE_BRACKET, KC_RIGHT_ANGLE_BRACKET),
     [COPY_PASTE_MAC] = ACTION_TAP_DANCE_FN(copy_paste_mac),
-    [COPY_PASTE] = ACTION_TAP_DANCE_FN(copy_paste)
+    [COPY_PASTE] = ACTION_TAP_DANCE_FN(copy_paste),
 };
 
 // Macro definitions
