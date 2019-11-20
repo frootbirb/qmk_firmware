@@ -22,62 +22,62 @@ enum {
 
 // Key combo definitions
 enum combos {
-	CMB_A = 0,
-	CMB_S,
-	CMB_D,
-	CMB_F,
-	CMB_G,
-	CMB_H,
-	CMB_J,
-	CMB_K,
-	CMB_L,
-	CMB_SCLN,
+	CMB_1 = 0,
+	CMB_2,
+	CMB_3,
+	CMB_4,
+	CMB_5,
+	CMB_6,
+	CMB_7,
+	CMB_8,
+	CMB_9,
+	CMB_0,
 };
 
-const uint16_t PROGMEM A_combo[] = {KC_Q, KC_Z, COMBO_END};
-const uint16_t PROGMEM S_combo[] = {KC_W, KC_X, COMBO_END};
-const uint16_t PROGMEM D_combo[] = {KC_E, KC_C, COMBO_END};
-const uint16_t PROGMEM F_combo[] = {KC_R, KC_V, COMBO_END};
-const uint16_t PROGMEM G_combo[] = {KC_T, KC_B, COMBO_END};
-const uint16_t PROGMEM H_combo[] = {KC_Y, KC_N, COMBO_END};
-const uint16_t PROGMEM J_combo[] = {KC_U, KC_M, COMBO_END};
-const uint16_t PROGMEM K_combo[] = {KC_I, KC_COMM, COMBO_END};
-const uint16_t PROGMEM L_combo[] = {KC_O, KC_DOT, COMBO_END};
-const uint16_t PROGMEM scln_combo[] = {KC_P, KC_UP, COMBO_END};
+const uint16_t PROGMEM combo_1[] = {KC_Q, KC_A, COMBO_END};
+const uint16_t PROGMEM combo_2[] = {KC_W, KC_S, COMBO_END};
+const uint16_t PROGMEM combo_3[] = {KC_E, KC_D, COMBO_END};
+const uint16_t PROGMEM combo_4[] = {KC_R, KC_F, COMBO_END};
+const uint16_t PROGMEM combo_5[] = {KC_T, KC_G, COMBO_END};
+const uint16_t PROGMEM combo_6[] = {KC_Y, KC_H, COMBO_END};
+const uint16_t PROGMEM combo_7[] = {KC_U, KC_J, COMBO_END};
+const uint16_t PROGMEM combo_8[] = {KC_I, KC_K, COMBO_END};
+const uint16_t PROGMEM combo_9[] = {KC_O, KC_L, COMBO_END};
+const uint16_t PROGMEM combo_0[] = {KC_P, KC_SCLN, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-	[CMB_A] = COMBO(A_combo, KC_A),
-	[CMB_S] = COMBO(S_combo, KC_S),
-	[CMB_D] = COMBO(D_combo, KC_D),
-	[CMB_F] = COMBO(F_combo, KC_F),
-	[CMB_G] = COMBO(G_combo, KC_G),
-	[CMB_H] = COMBO(H_combo, KC_H),
-	[CMB_J] = COMBO(J_combo, KC_J),
-	[CMB_K] = COMBO(K_combo, KC_K),
-	[CMB_L] = COMBO(L_combo, KC_L),
-	[CMB_SCLN] = COMBO(scln_combo, KC_SCLN),
+	[CMB_1] = COMBO(combo_1, KC_1),
+	[CMB_2] = COMBO(combo_2, KC_2),
+	[CMB_3] = COMBO(combo_3, KC_3),
+	[CMB_4] = COMBO(combo_4, KC_4),
+	[CMB_5] = COMBO(combo_5, KC_5),
+	[CMB_6] = COMBO(combo_6, KC_6),
+	[CMB_7] = COMBO(combo_7, KC_7),
+	[CMB_8] = COMBO(combo_8, KC_8),
+	[CMB_9] = COMBO(combo_9, KC_9),
+	[CMB_0] = COMBO(combo_0, KC_0),
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     KEYMAP(
         KC_ESC,  KC_Q,    KC_W,    KC_E, KC_R,  KC_T,    KC_Y,   KC_U,    KC_I,    KC_O,    KC_P,    xxxx,
-        KC_TAB,  KC_Z,    KC_X,    KC_C, KC_V,  KC_B,    KC_N,   KC_M,    KC_COMM, KC_DOT,  KC_SCLN, KC_QUOT,
-        MO(2),   KC_1,    KC_2,    KC_3, KC_4,  KC_5,    KC_6,   KC_7,    KC_8,    KC_9,    KC_0,    KC_UP,
-        KC_LCTL, KC_LWIN, KC_LALT, xxxx, MO(1), SFT_ENT, KC_SPC, KC_BSPC, xxxx,    KC_LEFT, KC_RGHT, KC_DOWN
+        KC_TAB,  KC_A,    KC_S,    KC_D, KC_F,  KC_G,    KC_H,   KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+        MO(2),   KC_Z,    KC_X,    KC_C, KC_V,  KC_B,    KC_N,   KC_M,    KC_COMM, KC_DOT,  KC_UP,   KC_RSFT,
+        KC_LCTL, KC_LWIN, KC_LALT, xxxx, MO(1), SFT_ENT, KC_SPC, KC_BSPC, xxxx,    KC_LEFT, KC_DOWN, KC_RGHT
     ),
  
     KEYMAP( // symbol layer
-        RESET, KC_TILD, KC_QUES, KC_EXLM, KC_SLSH, KC_AMPR, KC_PIPE, KC_UNDS, KC_AT,   KC_HASH, KC_DLR,  ____,
-        ____,  KC_PLUS, KC_MINS, KC_ASTR, KC_BSLS, KC_EQL,  ____,    PAREN,   BRACE,   BRACK,   ABRCK,   KC_GRV,
-        ____,  ____,    ____,    ____,    ____,    ____,    ____,    KC_CIRC, KC_PERC, ____,    ____,    ____,
+        RESET, ____,    ____,    ____,    ____,    ____,    ____,    KC_UNDS, KC_AT,   KC_HASH, KC_DLR,  ____,
+        ____,  KC_TILD, KC_QUES, KC_EXLM, KC_SLSH, KC_AMPR, KC_PIPE, PAREN,   BRACE,   BRACK,   ABRCK,   KC_GRV,
+        ____,  KC_PLUS, KC_MINS, KC_ASTR, KC_BSLS, KC_EQL,  ____,    KC_CIRC, KC_PERC, ____,    ____,    ____,
         ____,  ____,    ____,    ____,    ____,    ____,    ____,    KC_DEL,  ____,    ____,    ____,    ____
     ),
 
     KEYMAP( // navigation layer
         KC_PWR, KC_F1, KC_F2,  KC_F3,  KC_F4,  ____, ____, ____,   ____,    ____,    ____,    ____,
         ____,   KC_F5, KC_F6,  KC_F7,  KC_F8,  ____, ____, KC_INS, KC_NLCK, KC_CAPS, KC_SLCK, ____,
-        ____,   KC_F9, KC_F10, KC_F11, KC_F12, ____, ____, ____,   ____,    ____,    ____,    KC_PGUP,
-        ____,   ____,  ____,   ____,   ____,   ____, ____, ____,   ____,    KC_HOME, KC_END,  KC_PGDN
+        ____,   KC_F9, KC_F10, KC_F11, KC_F12, ____, ____, ____,   ____,    ____,    KC_PGUP, ____,
+        ____,   ____,  ____,   ____,   ____,   ____, ____, ____,   ____,    KC_HOME, KC_PGDN, KC_END
     ),
 };
