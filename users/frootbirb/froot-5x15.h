@@ -1,5 +1,22 @@
 #include "frootbirb.h"
 
+// Custom password key
+enum custom_keycodes {
+  PASSWD = SAFE_RANGE,
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case PASSWD:
+      if (record->event.pressed) {
+        SEND_STRING("88gJRK1xT2^c0gIRLsP!");
+      }
+      break;
+
+  }
+  return true;
+};
+
 // Color setup
 void matrix_init_user(void) {
 	rgblight_enable();
@@ -34,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     LAYOUT_ortho_5x15( // mac layer
-        MAC_LCK, ____,    ____,    ____,    ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,
+        MAC_LCK, ____,    ____,    ____,    ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, PASSWD,
         ____,    ____,    ____,    ____,    ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, RGUI(KC_F),
         ____,    ____,    ____,    ____,    ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,
         ____,    ____,    ____,    ____,    ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,
