@@ -8,5 +8,5 @@ COMBO_ENABLE = yes
 NKRO_ENABLE = yes
 
 # Filesize reduction
-#EXTRAFLAGS += -flto
+EXTRAFLAGS += -flto
 MOUSEKEY_ENABLE = no

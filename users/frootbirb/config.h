@@ -1,7 +1,7 @@
 #ifndef CONFIG_USERSPACE_H
 #define CONFIG_USERSPACE_H
 
-#define TAPPING_TERM 150
+#define TAPPING_TERM 200
 
 #define COMBO_COUNT 2
 #define FORCE_NKRO
