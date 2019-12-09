@@ -67,10 +67,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     LAYOUT_ortho_5x15( // navigation layer
-        KC_PWR, ____,  ____,   ____,   ____,   ____, ____, ____, ____, ____, ____,    RGB_HUD, RGB_HUI, ____,    PASSWD,
-        ____,   KC_F1, KC_F2,  KC_F3,  KC_F4,  ____, ____, ____, ____, ____, RGB_TOG, RGB_VAD, RGB_VAI, RGB_MOD, RGUI(KC_SPC),
-        ____,   KC_F5, KC_F6,  KC_F7,  KC_F8,  ____, ____, ____, ____, ____, KC_INS,  KC_NLCK, KC_CAPS, KC_SLCK, ____,
-        ____,   KC_F9, KC_F10, KC_F11, KC_F12, ____, ____, ____, ____, ____, ____,    ____,    MAC_SCR, KC_PGUP, KC_CAPS,
-        ____,   ____,  ____,   ____,   ____,   ____, ____, ____, ____, ____, KC_DEL,  TG(MAC), KC_HOME, KC_PGDN, KC_END
+        KC_PWR,  ____,    ____,    ____,   ____,   ____, ____, ____, ____, ____, ____,    RGB_HUD, RGB_HUI, ____,    PASSWD,
+        ____,    KC_F1,   KC_F2,   KC_F3,  KC_F4,  ____, ____, ____, ____, ____, RGB_TOG, RGB_VAD, RGB_VAI, RGB_MOD, RGUI(KC_SPC),
+        ____,    KC_F5,   KC_F6,   KC_F7,  KC_F8,  ____, ____, ____, ____, ____, KC_INS,  KC_NLCK, KC_CAPS, KC_SLCK, ____,
+        ____,    KC_F9,   KC_F10,  KC_F11, KC_F12, ____, ____, ____, ____, ____, ____,    ____,    MAC_SCR, KC_PGUP, KC_CAPS,
+        KC_RCTL, KC_RWIN, KC_RALT, ____,   ____,   ____, ____, ____, ____, ____, KC_DEL,  TG(MAC), KC_HOME, KC_PGDN, KC_END
     ),
 };

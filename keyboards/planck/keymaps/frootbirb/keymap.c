@@ -63,9 +63,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     KEYMAP( // navigation layer
-        KC_PWR, KC_F1, KC_F2,  KC_F3,  KC_F4,  ____, ____, ____,   ____,    ____,    ____,    ____,
-        ____,   KC_F5, KC_F6,  KC_F7,  KC_F8,  ____, ____, KC_INS, KC_NLCK, KC_CAPS, KC_SLCK, ____,
-        ____,   KC_F9, KC_F10, KC_F11, KC_F12, ____, ____, ____,   ____,    ____,    KC_PGUP, ____,
-        ____,   ____,  ____,   ____,   ____,   ____, ____, KC_DEL, TG(MAC), KC_HOME, KC_PGDN, KC_END
+        KC_PWR,  KC_F1,   KC_F2,   KC_F3,  KC_F4,  ____, ____, ____,   ____,    ____,    ____,    ____,
+        ____,    KC_F5,   KC_F6,   KC_F7,  KC_F8,  ____, ____, KC_INS, KC_NLCK, KC_CAPS, KC_SLCK, ____,
+        ____,    KC_F9,   KC_F10,  KC_F11, KC_F12, ____, ____, ____,   ____,    ____,    KC_PGUP, ____,
+        KC_RCTL, KC_RWIN, KC_RALT, ____,   ____,   ____, ____, KC_DEL, TG(MAC), KC_HOME, KC_PGDN, KC_END
     ), 
 };
