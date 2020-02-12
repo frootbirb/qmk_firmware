@@ -9,7 +9,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case PASSWD:
       if (record->event.pressed) {
-        SEND_STRING("88gJRK1xT2^c0gIRLsP!");
+        SEND_STRING("RlfEV67zE@Zw@kh!Lj61");
       }
       break;
 
