@@ -21,7 +21,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void matrix_init_user(void) {
 	rgblight_enable();
 	for (int i = 0; i < RGBLED_NUM; i++) {
-		setrgb(0, 255, 255, (LED_TYPE *)&led[i]);
+		setrgb(204, 102, 0, (LED_TYPE *)&led[i]);
 	}
 	rgblight_mode(RGBLIGHT_MODE_BREATHING);
 };
