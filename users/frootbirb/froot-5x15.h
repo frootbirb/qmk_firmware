@@ -2,17 +2,23 @@
 
 // Custom password key
 enum custom_keycodes {
-  PASSWD = SAFE_RANGE,
+  SER_PAS = SAFE_RANGE,
+  MAC_PAS
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case PASSWD:
+    case MAC_PAS:
       if (record->event.pressed) {
         SEND_STRING("RlfEV67zE@Zw@kh!Lj61");
       }
       break;
 
+    case SER_PAS:
+      if (record->event.pressed) {
+        SEND_STRING("7Wk2O&o2Y##ZgWO*b*u");
+      }
+      break;
   }
   return true;
 };
@@ -59,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     LAYOUT_ortho_5x15( // symbol layer
-        RESET, ____,    ____,    ____,    ____,    ____,    ____, ____, ____, ____,    ____,    ____,    ____,    ____,    ____,
+        RESET, ____,    ____,    ____,    ____,    ____,    ____, ____, ____, ____,    ____,    ____,    ____,    ____,    SER_PAS,
         ____,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    ____, ____, ____, ____,    KC_UNDS, KC_AT,   KC_HASH, KC_DLR,  ____,
         ____,  KC_TILD, KC_QUES, KC_EXLM, KC_SLSH, KC_AMPR, ____, ____, ____, KC_PIPE, PAREN,   BRACE,   BRACK,   ABRCK,   KC_GRV,
         ____,  KC_PLUS, KC_MINS, KC_ASTR, KC_BSLS, KC_EQL,  ____, ____, ____, ____,    KC_CIRC, KC_PERC, ____,    ____,    ____,
@@ -67,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     LAYOUT_ortho_5x15( // navigation layer
-        KC_PWR,  ____,    ____,    ____,   ____,   ____, ____, ____, ____, ____, ____,    RGB_HUD, RGB_HUI, ____,    PASSWD,
+        KC_PWR,  ____,    ____,    ____,   ____,   ____, ____, ____, ____, ____, ____,    RGB_HUD, RGB_HUI, ____,    MAC_PAS,
         ____,    KC_F1,   KC_F2,   KC_F3,  KC_F4,  ____, ____, ____, ____, ____, RGB_TOG, RGB_VAD, RGB_VAI, RGB_MOD, RGUI(KC_SPC),
         ____,    KC_F5,   KC_F6,   KC_F7,  KC_F8,  ____, ____, ____, ____, ____, KC_INS,  KC_NLCK, KC_CAPS, KC_SLCK, ____,
         ____,    KC_F9,   KC_F10,  KC_F11, KC_F12, ____, ____, ____, ____, ____, ____,    ____,    MAC_SCR, KC_PGUP, KC_CAPS,
