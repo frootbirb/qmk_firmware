@@ -1,6 +1,6 @@
 #include "frootbirb.h"
 
-// Custom password key
+// Custom password keycodes
 enum custom_keycodes {
   SER_PAS = SAFE_RANGE,
   MAC_PAS
@@ -23,7 +23,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 };
 
-// Color setup
+// Handle the Mac layer switch
+const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
+	switch (id) {
+		case 0:
+			layer_invert(NAV);
+			layer_invert(MNAV);
+			break;
+	}
+	
+	return MACRO_NONE;
+}
+
+// Initialize color backlighting
 void matrix_init_user(void) {
 	rgblight_enable();
 	for (int i = 0; i < RGBLED_NUM; i++) {
@@ -38,7 +50,9 @@ enum combos {
 	CMB_PAST,
 };
 
+// Pressing the - and = numpad keys makes +
 const uint16_t PROGMEM pls_combo[] = {KC_PMNS, KC_EQL, COMBO_END};
+// Pressing the / and = numpad keys makes *
 const uint16_t PROGMEM ast_combo[] = {KC_PSLS, KC_EQL, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
@@ -61,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ____,    ____,    ____,    ____,    ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, RGUI(KC_F),
         ____,    ____,    ____,    ____,    ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,
         ____,    ____,    ____,    ____,    ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,
-        KC_RCMD, KC_LALT, KC_LCTL, MACCOPY, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____
+        KC_RCMD, KC_LALT, KC_LCTL, MACCOPY, ____, ____, ____, ____, M(0), ____, ____, ____, ____, ____, ____
     ),
 
     LAYOUT_ortho_5x15( // symbol layer
@@ -73,10 +87,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     LAYOUT_ortho_5x15( // navigation layer
-        KC_PWR,  ____,    ____,    ____,   ____,   ____, ____, ____, ____, ____, ____,    RGB_HUD, RGB_HUI, ____,    MAC_PAS,
-        ____,    KC_F1,   KC_F2,   KC_F3,  KC_F4,  ____, ____, ____, ____, ____, RGB_TOG, RGB_VAD, RGB_VAI, RGB_MOD, RGUI(KC_SPC),
+        KC_PWR,  ____,    ____,    ____,   ____,   ____, ____, ____, ____, ____, ____,    RGB_HUD, RGB_HUI, ____,    SER_PAS,
+        ____,    KC_F1,   KC_F2,   KC_F3,  KC_F4,  ____, ____, ____, ____, ____, RGB_TOG, RGB_VAD, RGB_VAI, RGB_MOD, LGUI(KC_S),
         ____,    KC_F5,   KC_F6,   KC_F7,  KC_F8,  ____, ____, ____, ____, ____, KC_INS,  KC_NLCK, KC_CAPS, KC_SLCK, ____,
-        ____,    KC_F9,   KC_F10,  KC_F11, KC_F12, ____, ____, ____, ____, ____, ____,    ____,    MAC_SCR, KC_PGUP, KC_CAPS,
+        ____,    KC_F9,   KC_F10,  KC_F11, KC_F12, ____, ____, ____, ____, ____, ____,    ____,    KC_PSCR, KC_PGUP, KC_CAPS,
         KC_RCTL, KC_RWIN, KC_RALT, ____,   ____,   ____, ____, ____, ____, ____, KC_DEL,  TG(MAC), KC_HOME, KC_PGDN, KC_END
+    ),
+
+    LAYOUT_ortho_5x15( // mac navigation layer
+        ____,    ____,    ____,    ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,    ____, MAC_PAS,
+        ____,    ____,    ____,    ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,    ____, RGUI(KC_SPC),
+        ____,    ____,    ____,    ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,    ____, ____,
+        ____,    ____,    ____,    ____, ____, ____, ____, ____, ____, ____, ____, ____, MAC_SCR, ____, ____,
+        KC_LCMD, KC_RALT, KC_RCTL, ____, ____, ____, ____, ____, ____, ____, ____, ____, ____,    ____, ____
     ),
 };

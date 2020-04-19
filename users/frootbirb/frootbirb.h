@@ -32,6 +32,7 @@ enum Layer {
 	MAC,
 	SYM,
 	NAV,
+	MNAV,
 };
 
 // Tap Dance Declarations
