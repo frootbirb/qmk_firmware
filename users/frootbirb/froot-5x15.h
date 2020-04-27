@@ -10,13 +10,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case MAC_PAS:
       if (record->event.pressed) {
-        SEND_STRING("RlfEV67zE@Zw@kh!Lj61");
+        SEND_STRING("RlfEV67zE@Zw@kh!Lj61" SS_TAP(X_ENTER));
       }
       break;
 
     case SER_PAS:
       if (record->event.pressed) {
-        SEND_STRING("7Wk2O&o2Y##ZgWO*b*u");
+        SEND_STRING("7Wk2O&o2Y##ZgWO*b*u" SS_TAP(X_ENTER));
       }
       break;
   }
