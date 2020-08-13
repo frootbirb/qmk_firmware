@@ -5,6 +5,8 @@
 
 #undef COMBO_COUNT
 #define COMBO_COUNT 12
+#define COMBO_TERM 30
+
 #define FORCE_NKRO
 
 // Filesize reduction
