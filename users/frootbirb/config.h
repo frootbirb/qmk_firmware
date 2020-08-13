@@ -3,7 +3,8 @@
 
 #define TAPPING_TERM 200
 
-#define COMBO_COUNT 2
+#undef COMBO_COUNT
+#define COMBO_COUNT 12
 #define FORCE_NKRO
 
 // Filesize reduction
