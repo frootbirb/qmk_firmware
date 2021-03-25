@@ -82,7 +82,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		case PASSWD:
 			if (record->event.pressed) {
 				if (is_mac) {
-					SEND_STRING("#fE535gU!1" SS_DELAY(50) SS_TAP(X_ENTER));
+					SEND_STRING("K$^1i8Ny#M" SS_DELAY(50) SS_TAP(X_ENTER));
 				}
 				else {
 					SEND_STRING("7Wk2O&o2Y##ZgWO*b*u" SS_DELAY(50) SS_TAP(X_ENTER));
