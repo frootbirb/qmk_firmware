@@ -54,6 +54,8 @@ enum Layer {
 	DEF = 0,
 	SYM,
 	NAV,
+	GAM,
+	NUM,
 };
 
 // ---------------------- Handle custom keycodes ---------------------- //
