@@ -43,3 +43,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		                                       ____, ____, ____,    ____, ____, KC_DEL
     ),
 };
+
+void 
+keyboard_pre_init_user(void) 
+{ 
+    setPinInputHigh(D0); 
+    setPinInputHigh(D1); 
+}
+
+void keyboard_post_init_user(void) {
+#ifdef CONSOLE_ENABLE
+// Customise these values to desired behaviour
+  debug_enable=true;
+  debug_matrix=true;
+  debug_keyboard=true;
+#endif
+}

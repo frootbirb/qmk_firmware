@@ -1,4 +1,5 @@
 #include "frootbirb.h"
+#include "secrets.h"
 
 bool is_mac = false; // Default to windows operation for extended character code sequences
 
@@ -82,10 +83,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		case PASSWD:
 			if (record->event.pressed) {
 				if (is_mac) {
-					SEND_STRING("K$^1i8Ny#M" SS_DELAY(50) SS_TAP(X_ENTER));
+					SEND_STRING(MAC_PASSWD SS_DELAY(50) SS_TAP(X_ENTER));
 				}
 				else {
-					SEND_STRING("7Wk2O&o2Y##ZgWO*b*u" SS_DELAY(50) SS_TAP(X_ENTER));
+					SEND_STRING(SERVER_PASSWD SS_DELAY(50) SS_TAP(X_ENTER));
 				}
 			}
 			return false;
