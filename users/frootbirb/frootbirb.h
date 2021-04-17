@@ -101,7 +101,7 @@ static const uint16_t mac_pc_codes[][2] = {
 		LWIN(KC_S),
 		RGUI(KC_SPC)
 	}, {// SCRNSHT
-		KC_PSCR,
+		RGUI(S(KC_S)),
 		RGUI(S(KC_4))
 	},
 };
