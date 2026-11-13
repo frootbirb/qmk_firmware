@@ -1,0 +1,17 @@
+SRC += frootbirb.c
+
+COMBO_ENABLE = yes
+NKRO_ENABLE = yes
+
+# Filesize reduction
+LTO_ENABLE = yes
+
+AUDIO_ENABLE = no
+BLUETOOTH_ENABLE = no
+COMMAND_ENABLE = no
+CONSOLE_ENABLE = no
+EXTRAKEY_ENABLE = no
+MAGIC_ENABLE = no
+MIDI_ENABLE = no
+MOUSEKEY_ENABLE = no
+SPACE_CADET_ENABLE = no
