@@ -32,6 +32,7 @@ enum Layer {
 // Custom password keycodes
 enum custom_keycodes {
 	PASSWRD = SAFE_RANGE,
+    SCRNSHT,
 };
 
 #endif

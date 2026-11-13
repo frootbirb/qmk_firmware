@@ -45,12 +45,18 @@ bool led_update_user(led_t led_state) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	if (record->event.pressed) {
 		switch (keycode) {
-			// ---------------------- Special keys ---------------------- //
 			case PASSWRD:
                 send_string(layer_state_is(MAC) ? MAC_PASSWD : SERVER_PASSWD);
                 SEND_STRING(SS_DELAY(50) SS_TAP(X_ENTER));
 				return false;
 		}
 	}
+    else {
+        switch (keycode) {
+            case SCRNSHT:
+                layer_state_is(MAC) ? SEND_STRING(SS_LCMD(SS_LSFT("4"))) : SEND_STRING(SS_LWIN(SS_LSFT("s")));
+                return false;
+        }
+    }
 	return true;
 };
