@@ -4,7 +4,6 @@
 #include "quantum.h"
 
 // Prettify common keycodes
-#define ____ KC_TRNS
 #define _______ KC_TRNS
 #define xxxx KC_NO
 
@@ -13,7 +12,8 @@
 #define M_PASTE LWIN(KC_V)
 #define SFT_ENT LSFT_T(KC_ENT)
 #define NAV_DOT LT(NAV, KC_DOT)
-#define TSKMGR	LCTL(LSFT(KC_ESC))
+#define WINSHOT LWIN(LSFT(KC_S))
+#define MACSHOT LCMD(LSFT(KC_4))
 
 #define KC_LB LOPT(KC_3)
 #define KC_EU LSFT(LOPT(KC_2))
@@ -22,17 +22,18 @@
 
 enum Layer {
 	DEF = 0,
+	MAC,
 	SYM,
 	NAV,
-	MAC,
+    MAC_NAV,
 };
 
 // ---------------------- Handle custom keycodes ---------------------- //
 
 // Custom password keycodes
 enum custom_keycodes {
-	PASSWRD = SAFE_RANGE,
-    SCRNSHT,
+    WINPASS = SAFE_RANGE,
+    MACPASS,
 };
 
 #endif

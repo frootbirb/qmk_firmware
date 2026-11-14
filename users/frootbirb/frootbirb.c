@@ -31,7 +31,7 @@ void keyboard_post_init_user(void) {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     rgblight_set_layer_state(1, layer_state_cmp(state, MAC));
-    return state;
+    return update_tri_layer_state(state, MAC, NAV, MAC_NAV); // handle tri-layering
 }
 
 bool led_update_user(led_t led_state) {
@@ -45,18 +45,13 @@ bool led_update_user(led_t led_state) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	if (record->event.pressed) {
 		switch (keycode) {
-			case PASSWRD:
-                send_string(layer_state_is(MAC) ? MAC_PASSWD : SERVER_PASSWD);
-                SEND_STRING(SS_DELAY(50) SS_TAP(X_ENTER));
+            case MACPASS:
+                SEND_STRING(MAC_PASSWD SS_DELAY(50) SS_TAP(X_ENTER));
+				return false;
+            case WINPASS:
+                SEND_STRING(SERVER_PASSWD SS_DELAY(50) SS_TAP(X_ENTER));
 				return false;
 		}
 	}
-    else {
-        switch (keycode) {
-            case SCRNSHT:
-                layer_state_is(MAC) ? SEND_STRING(SS_LCMD(SS_LSFT("4"))) : SEND_STRING(SS_LWIN(SS_LSFT("s")));
-                return false;
-        }
-    }
 	return true;
 };
